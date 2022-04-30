@@ -114,7 +114,7 @@ class ValueIterationAgent(ValueEstimationAgent):
         max_action = None
         max_action_value = -inf
         for action in self.mdp.getPossibleActions(state):
-            value = self.getValue(state)
+            value = self.getQValue(state, action)
             if value > max_action_value: 
                 max_action = action
                 max_action_value = value
