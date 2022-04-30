@@ -33,6 +33,7 @@ def question2():
     return answerDiscount, answerNoise
 
 def question3a():
+    #Prefer the close exit (+1), risking the cliff (-10)
     answerDiscount = 1
     answerNoise = 0
     answerLivingReward = -5
@@ -40,6 +41,7 @@ def question3a():
     # If not possible, return 'NOT POSSIBLE'
 
 def question3b():
+    #Prefer the close exit (+1), but avoiding the cliff (-10)
     answerDiscount = .3
     answerNoise = .2
     answerLivingReward = -2
@@ -47,6 +49,7 @@ def question3b():
     # If not possible, return 'NOT POSSIBLE'
 
 def question3c():
+    #Prefer the distant exit (+10), risking the cliff (-10)
     answerDiscount = 1
     answerNoise = 0
     answerLivingReward = -2
@@ -54,6 +57,7 @@ def question3c():
     # If not possible, return 'NOT POSSIBLE'
 
 def question3d():
+    #Prefer the distant exit (+10), avoiding the cliff (-10)
     answerDiscount = .8
     answerNoise = .2
     answerLivingReward = 0
@@ -61,6 +65,7 @@ def question3d():
     # If not possible, return 'NOT POSSIBLE'
 
 def question3e():
+    #Avoid both exits and the cliff (so an episode should never terminate)
     answerDiscount = 1
     answerNoise = 0
     answerLivingReward = 200
@@ -68,6 +73,8 @@ def question3e():
     # If not possible, return 'NOT POSSIBLE'
 
 def question8():
+    #Epsilon 1 got as far as second tile on bridge
+    #Epsilon 0 got stuck on first tile of bridge in loop
     answerEpsilon = None
     answerLearningRate = None
     return 'NOT POSSIBLE'

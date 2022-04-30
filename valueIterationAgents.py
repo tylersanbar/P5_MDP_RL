@@ -64,6 +64,8 @@ class ValueIterationAgent(ValueEstimationAgent):
     def runValueIteration(self):
         # Write value iteration code here
         "*** YOUR CODE HERE ***"
+        #Offline value updates
+        #Finds the max Q for each state, and updates our value to that for each iteration
         for iteration in range(self.iterations):
             updates = []
             for state in self.mdp.getStates():
@@ -90,6 +92,8 @@ class ValueIterationAgent(ValueEstimationAgent):
           value function stored in self.values.
         """
         "*** YOUR CODE HERE ***"
+        #Computes the Q Value of the state and action
+        #Q = sum of actions of S for (T(s, a, s') * (R + discount * V(s'))
         q_value = 0
         transitions = self.mdp.getTransitionStatesAndProbs(state, action)
         for transition in transitions:
@@ -111,6 +115,8 @@ class ValueIterationAgent(ValueEstimationAgent):
           terminal state, you should return None.
         """
         "*** YOUR CODE HERE ***"
+        #For each action, find if its value is the maximum, and return it
+        #Returns none if there are no possible actions
         max_action = None
         max_action_value = -inf
         for action in self.mdp.getPossibleActions(state):

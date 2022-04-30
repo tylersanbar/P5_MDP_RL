@@ -65,6 +65,7 @@ class QLearningAgent(ReinforcementAgent):
           terminal state, you should return a value of 0.0.
         """
         "*** YOUR CODE HERE ***"
+        #Our max action is computed by getPolicy
         best_action = self.getPolicy(state)
         if best_action == None: best_action = 0
         return self.getQValue(state, best_action)
@@ -78,6 +79,8 @@ class QLearningAgent(ReinforcementAgent):
           you should return None.
         """
         "*** YOUR CODE HERE ***"
+        #Gets the max q value, and returns the action associated with it
+        #Ties resolved by random choice
         max_q = -math.inf
         best_action = None
         for action in self.getLegalActions(state):
@@ -106,7 +109,9 @@ class QLearningAgent(ReinforcementAgent):
         action = None
         "*** YOUR CODE HERE ***"
         if len(legalActions) == 0: return None
+        #Returns true with probability p = self.epsilon
         if util.flipCoin(self.epsilon): action = random.choice(legalActions)
+        #returns false with probability 1-p
         else: action = self.getPolicy(state)
         return action
 
@@ -120,6 +125,7 @@ class QLearningAgent(ReinforcementAgent):
           it will be called on your behalf
         """
         "*** YOUR CODE HERE ***"
+        #Q = Q + alpha * (reward + (discount * Q') - Q)
         q = self.getQValue(state, action)
         next_q = self.getValue(nextState)
         q = q + self.alpha * (reward + (self.discount * next_q) - q)
